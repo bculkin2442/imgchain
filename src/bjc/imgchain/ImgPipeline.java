@@ -28,7 +28,10 @@ import bjc.imgchain.pipeline.stages.IDStage;
 import bjc.imgchain.pipeline.stages.LoadStage;
 import bjc.imgchain.pipeline.stages.NegativeStage;
 import bjc.imgchain.pipeline.stages.PipeStage;
+import bjc.imgchain.pipeline.stages.RecallStage;
+import bjc.imgchain.pipeline.stages.SaveStage;
 import bjc.imgchain.pipeline.stages.StagePicker;
+import bjc.imgchain.pipeline.stages.StashStage;
 import bjc.imgchain.pipeline.stages.ThresholdStage;
 
 /**
@@ -166,6 +169,18 @@ public class ImgPipeline extends JInternalFrame {
 					break;
 				case "Load Image": {
 					stag = new LoadStage();
+				}
+					break;
+				case "Save Image": {
+					stag = new SaveStage();
+				}
+					break;
+				case "Stash Image": {
+					stag = new StashStage();
+				}
+					break;
+				case "Recall Image": {
+					stag = new RecallStage();
 				}
 					break;
 				default:

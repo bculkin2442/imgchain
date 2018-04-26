@@ -39,7 +39,12 @@ public class StagePicker extends JDialog {
 				{ "Negative", "Invert your images colors" }, { "Gaussian Blur", "Blur images" },
 				{ "Tint", "Add/remove colors" }, { "Threshold", "Convert the image to black/white" },
 				{ "Sub-pipeline", "Execute another pipeline" },
-				{ "Load Image", "Load an image from a file" } };
+				{ "Load Image", "Load an image from a file" },
+				{ "Save Image", "Save an image to a file" },
+				{ "Stash Image", "Stash an image to memory" },
+				{ "Recall Image", "Recall an image from memory" },
+				{ "Additive Mask", "Add two images together" },
+				{ "Subtractive Mask", "Subtract one image from another" } };
 
 		JTable stageTable = new JTable(new ImmutableTableModel(data, columnNames));
 
