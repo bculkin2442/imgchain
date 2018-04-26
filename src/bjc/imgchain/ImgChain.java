@@ -16,7 +16,18 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+import bjc.imgchain.pipeline.Pipeline;
+
+/**
+ * Main class for ImgChain
+ * 
+ * @author acm
+ *
+ */
 public class ImgChain {
+	/*
+	 * Action to perform when loading an image.
+	 */
 	private final class LoadImageListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent ev) {
@@ -40,22 +51,51 @@ public class ImgChain {
 		}
 	}
 
-	private JDesktopPane desktop;
+	/**
+	 * The desktop everything is attached to.
+	 */
+	public JDesktopPane desktop;
 
-	private Map<String, Image> imageRepo;
+	/*
+	 * The storage for images.
+	 */
+	public final Map<String, Image> imageRepo;
 
+	/*
+	 * The storage for images.
+	 */
+	public final Map<String, Pipeline> pipelineRepo;
+
+	/**
+	 * The image chain instance.
+	 */
+	public static ImgChain chan;
+
+	/**
+	 * Main method
+	 * 
+	 * @param args
+	 *                Unused CLI args
+	 */
 	public static void main(String[] args) {
 		System.out.println("ImgChain Loading...");
 
-		ImgChain chn = new ImgChain();
+		chan = new ImgChain();
 
-		chn.setupGUI();
+		chan.setupGUI();
 	}
 
+	/**
+	 * Initialize image repo
+	 */
 	public ImgChain() {
 		imageRepo = new HashMap<>();
+		pipelineRepo = new HashMap<>();
 	}
 
+	/*
+	 * Setup the GUI
+	 */
 	private void setupGUI() {
 		JFrame frame = new JFrame("ImgChain v1");
 		frame.setLayout(new GridLayout(1, 1));
@@ -75,6 +115,9 @@ public class ImgChain {
 		frame.setVisible(true);
 	}
 
+	/*
+	 * Setup the menubar.
+	 */
 	private JMenuBar setupMenubar(JFrame frame) {
 		JMenuBar menu = new JMenuBar();
 
@@ -84,7 +127,7 @@ public class ImgChain {
 		JMenuItem aboutItem = new JMenuItem("About");
 		aboutItem.setMnemonic('A');
 		aboutItem.addActionListener((ev) -> {
-			JOptionPane.showMessageDialog(frame, "ImgChain v1\nDeveloped by Benjamin Culkin",
+			JOptionPane.showMessageDialog(frame, "ImgChain v2\nDeveloped by Benjamin Culkin",
 					"About ImgChain", JOptionPane.INFORMATION_MESSAGE);
 		});
 
@@ -107,11 +150,33 @@ public class ImgChain {
 
 		imageMenu.add(loadImage);
 
+		JMenu pipelineMenu = new JMenu("Pipelines");
+		JMenuItem createPipe = new JMenuItem("Create Pipeline");
+		createPipe.setMnemonic('C');
+		createPipe.addActionListener((ev) -> {
+			ImgPipeline pip = new ImgPipeline();
+
+			desktop.add(pip);
+			pip.setVisible(true);
+		});
+
+		pipelineMenu.add(createPipe);
+
 		menu.add(fileMenu);
 		menu.add(imageMenu);
+		menu.add(pipelineMenu);
+
 		return menu;
 	}
 
+	/**
+	 * Add an image to the image repository.
+	 * 
+	 * @param name
+	 *                The name of the image
+	 * @param img
+	 *                The image to add.
+	 */
 	public void addImage(String name, Image img) {
 		if (imageRepo.containsKey(name)) {
 			String msg = String.format("Are you sure you want to overwrite stored image '%s'?", name);
@@ -122,5 +187,25 @@ public class ImgChain {
 		}
 
 		imageRepo.put(name, img);
+	}
+
+	/**
+	 * Add an pipeline to the pipeline repository.
+	 * 
+	 * @param pipe
+	 *                The pipeline to add.
+	 */
+	public void addPipe(Pipeline pipe) {
+		String name = pipe.name();
+
+		if (pipelineRepo.containsKey(name)) {
+			String msg = String.format("Are you sure you want to overwrite stored pipeline '%s'?", name);
+
+			if (JOptionPane.showInternalConfirmDialog(desktop, msg) != JOptionPane.OK_OPTION) {
+				return;
+			}
+		}
+
+		pipelineRepo.put(name, pipe);
 	}
 }
