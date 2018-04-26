@@ -1,4 +1,4 @@
-package bjc.imgchain.pipeline;
+package bjc.imgchain;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -12,16 +12,16 @@ import javax.swing.JScrollPane;
 
 import bjc.imgchain.ImgChain;
 
-public class PipelinePicker extends JDialog {
+public class ImgPicker extends JDialog {
 	private static final long serialVersionUID = 1L;
 
-	public String pipeName;
+	public String imageName;
 
-	public PipelinePicker() {
+	public ImgPicker() {
 		super();
 
 		setModalityType(ModalityType.APPLICATION_MODAL);
-		setTitle("Apply a Pipeline");
+		setTitle("Recall an Image");
 
 		setupGUI();
 	}
@@ -29,20 +29,20 @@ public class PipelinePicker extends JDialog {
 	private void setupGUI() {
 		setLayout(new BorderLayout());
 
-		DefaultListModel<String> pipeModel = new DefaultListModel<>();
-		for (String pipeName : ImgChain.chan.pipelineRepo.keySet()) {
-			pipeModel.addElement(pipeName);
+		DefaultListModel<String> imgModel = new DefaultListModel<>();
+		for (String imgName : ImgChain.chan.imageRepo.keySet()) {
+			imgModel.addElement(imgName);
 		}
 
-		JList<String> pipeList = new JList<>(pipeModel);
-		JScrollPane listScroll = new JScrollPane(pipeList);
+		JList<String> imgList = new JList<>(imgModel);
+		JScrollPane listScroll = new JScrollPane(imgList);
 
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new GridLayout(2, 1));
 
-		JButton addStage = new JButton("Apply Pipe");
+		JButton addStage = new JButton("Recall Image");
 		addStage.addActionListener((ev) -> {
-			pipeName = pipeList.getSelectedValue();
+			imageName = imgList.getSelectedValue();
 
 			setVisible(false);
 			dispose();

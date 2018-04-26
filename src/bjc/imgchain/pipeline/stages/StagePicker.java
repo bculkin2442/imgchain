@@ -36,7 +36,10 @@ public class StagePicker extends JDialog {
 		String[][] data = new String[][] { { "Identity", "Pass through image unchanged" },
 				{ "Greyscale", "Convert a color image into greyscale" },
 				{ "Color Skew", "Adjust color balance" }, { "Sepia", "Make your image sepia toned" },
-				{ "Negative", "Invert your images colors" }, { "Gaussian Blur", "Blur images" } };
+				{ "Negative", "Invert your images colors" }, { "Gaussian Blur", "Blur images" },
+				{ "Tint", "Add/remove colors" }, { "Threshold", "Convert the image to black/white" },
+				{ "Sub-pipeline", "Execute another pipeline" },
+				{ "Load Image", "Load an image from a file" } };
 
 		JTable stageTable = new JTable(new ImmutableTableModel(data, columnNames));
 

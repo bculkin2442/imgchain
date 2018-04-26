@@ -11,37 +11,36 @@ import javax.swing.border.TitledBorder;
 import bjc.imgchain.pipeline.StageType;
 import bjc.imgchain.utils.LabeledInputPanel;
 
-public class BrightnessStage extends AbstractPixelStage {
-	public BrightnessStage() {
+public class ThresholdStage extends AbstractPixelStage {
+	public ThresholdStage() {
 		this(0, 0, 0);
 	}
 
-	public BrightnessStage(int rr, int gg, int bb) {
+	public ThresholdStage(int rr, int gg, int bb) {
 		super(StageType.IMGTRANS);
-		
-		this.rr = rr;
-		this.gg = gg;
-		this.bb = bb;
+
+		this.redThreshold = rr;
+		this.greenThreshold = gg;
+		this.blueThreshold = bb;
 	}
 
-
-	private int rr;
-	private int gg;
-	private int bb;
+	private int redThreshold;
+	private int greenThreshold;
+	private int blueThreshold;
 
 	@Override
 	public int[] processPixel(int[] pix) {
 		int[] ret = new int[4];
 
 		ret[0] = pix[0];
-		ret[1] = pix[1] + rr;
-		ret[2] = pix[2] + gg;
-		ret[3] = pix[3] + bb;
-		
+		ret[1] = pix[1] > redThreshold ? 255 : 0;
+		ret[2] = pix[2] > greenThreshold ? 255 : 0;
+		ret[3] = pix[3] > blueThreshold ? 255 : 0;
+
 		ret[1] = Math.max(0, Math.min(255, ret[1]));
 		ret[2] = Math.max(0, Math.min(255, ret[2]));
 		ret[3] = Math.max(0, Math.min(255, ret[3]));
-		
+
 		return ret;
 	}
 
@@ -62,42 +61,42 @@ public class BrightnessStage extends AbstractPixelStage {
 
 		JPanel rSkew = new JPanel();
 		rSkew.setLayout(new GridLayout(1, 3));
-		rSkew.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED), "Red Balance"));
-		
+		rSkew.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED), "Red Threshold"));
+
 		JPanel gSkew = new JPanel();
 		gSkew.setLayout(new GridLayout(1, 3));
-		gSkew.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED), "Green Balance"));
-		
+		gSkew.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED), "Green Threshold"));
+
 		JPanel bSkew = new JPanel();
 		bSkew.setLayout(new GridLayout(1, 3));
-		bSkew.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED), "Blue Balance"));
-		
+		bSkew.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED), "Blue Threshold"));
 
-		LabeledInputPanel rpercRed = new LabeledInputPanel("+/- Red", rr);
-		rSkew.add(rpercRed);;
+		LabeledInputPanel rpercRed = new LabeledInputPanel("Red", redThreshold);
+		rSkew.add(rpercRed);
+		;
 
-		LabeledInputPanel gpercGreen = new LabeledInputPanel("+/- Green", gg);
+		LabeledInputPanel gpercGreen = new LabeledInputPanel("Green", greenThreshold);
 		gSkew.add(gpercGreen);
 
-		LabeledInputPanel bpercBlue = new LabeledInputPanel("+/- Blue", bb);
+		LabeledInputPanel bpercBlue = new LabeledInputPanel("Blue", blueThreshold);
 		bSkew.add(bpercBlue);
 
 		rpercRed.addPropertyChangeListener("value", (ev) -> {
-			rr = (Integer)rpercRed.field.getValue();
+			redThreshold = (Integer) rpercRed.field.getValue();
 		});
-		
+
 		gpercGreen.addPropertyChangeListener("value", (ev) -> {
-			gg = (Integer)gpercGreen.field.getValue();
+			greenThreshold = (Integer) gpercGreen.field.getValue();
 		});
-		
+
 		bpercBlue.addPropertyChangeListener("value", (ev) -> {
-			bb = (Integer)bpercBlue.field.getValue();
+			blueThreshold = (Integer) bpercBlue.field.getValue();
 		});
-		
+
 		holder.add(rSkew);
 		holder.add(gSkew);
 		holder.add(bSkew);
-		
+
 		return holder;
 	}
 

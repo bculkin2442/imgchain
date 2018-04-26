@@ -20,12 +20,16 @@ import javax.swing.border.TitledBorder;
 
 import bjc.imgchain.pipeline.MutablePipeline;
 import bjc.imgchain.pipeline.PipelineStage;
+import bjc.imgchain.pipeline.stages.BrightnessStage;
 import bjc.imgchain.pipeline.stages.ColorSkewStage;
 import bjc.imgchain.pipeline.stages.GaussStage;
 import bjc.imgchain.pipeline.stages.GreyscaleStage;
 import bjc.imgchain.pipeline.stages.IDStage;
+import bjc.imgchain.pipeline.stages.LoadStage;
 import bjc.imgchain.pipeline.stages.NegativeStage;
+import bjc.imgchain.pipeline.stages.PipeStage;
 import bjc.imgchain.pipeline.stages.StagePicker;
+import bjc.imgchain.pipeline.stages.ThresholdStage;
 
 /**
  * Edit an image pipeline.
@@ -146,6 +150,22 @@ public class ImgPipeline extends JInternalFrame {
 					break;
 				case "Gaussian Blur": {
 					stag = new GaussStage();
+				}
+					break;
+				case "Tint": {
+					stag = new BrightnessStage();
+				}
+					break;
+				case "Threshold": {
+					stag = new ThresholdStage();
+				}
+					break;
+				case "Sub-pipeline": {
+					stag = new PipeStage();
+				}
+					break;
+				case "Load Image": {
+					stag = new LoadStage();
 				}
 					break;
 				default:

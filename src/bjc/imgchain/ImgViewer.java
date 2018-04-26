@@ -63,7 +63,7 @@ public class ImgViewer extends JInternalFrame {
 				icon.setImage(ImageIO.read(tmp));
 
 				img = tmp;
-				
+
 				setTitle("Image Viewer - " + img.getName());
 			} catch (IOException e) {
 				String msg = String.format("Error: Could not load image %s", img.getPath());
@@ -124,16 +124,44 @@ public class ImgViewer extends JInternalFrame {
 		JMenu fileMenu = new JMenu("File");
 		fileMenu.setMnemonic('F');
 
-		JMenuItem changeImage = new JMenuItem("Change Image");
-		changeImage.setMnemonic('C');
+		JMenuItem changeImage = new JMenuItem("Load Image from Disk");
+		changeImage.setMnemonic('L');
 		changeImage.addActionListener(new ChangeImageListener());
 
 		JMenuItem reloadImage = new JMenuItem("Reload Image");
 		reloadImage.setMnemonic('R');
 		reloadImage.addActionListener(new ReloadImageListener(img));
 
-		JMenuItem storeImage = new JMenuItem("Store Image");
-		storeImage.setMnemonic('S');
+		JMenuItem saveImage = new JMenuItem("Save Image");
+		saveImage.setMnemonic('S');
+		saveImage.addActionListener((ev) -> {
+			JFileChooser jfc = new JFileChooser();
+			jfc.setMultiSelectionEnabled(false);
+
+			int res = jfc.showSaveDialog(ImgViewer.this);
+
+			if (res != JFileChooser.APPROVE_OPTION) {
+				return;
+			}
+
+			try {
+				File tmp = jfc.getSelectedFile();
+
+				ImageIO.write(Utils.toBuffered(icon.getImage()), "PNG", tmp);
+			} catch (IOException e) {
+				String msg = String.format("Error: Could not save image %s", img.getPath());
+
+				System.out.printf("%s\n", msg);
+
+				e.printStackTrace();
+
+				JOptionPane.showInternalMessageDialog(null, msg, "Error saving image",
+						JOptionPane.ERROR_MESSAGE);
+			}
+		});
+		
+		JMenuItem storeImage = new JMenuItem("Stash Image to Memory");
+		storeImage.setMnemonic('T');
 		storeImage.addActionListener((ev) -> {
 			String inp = JOptionPane.showInternalInputDialog(this, "Enter name to store image under");
 
@@ -147,6 +175,25 @@ public class ImgViewer extends JInternalFrame {
 			}
 
 			desktop.addImage(inp, icon.getImage());
+		});
+
+		JMenuItem recallImage = new JMenuItem("Recall Image from Memory");
+		recallImage.setMnemonic('F');
+		recallImage.addActionListener((ev) -> {
+			ImgPicker pick = new ImgPicker();
+
+			pick.pack();
+			pick.setVisible(true);
+
+			if (pick.imageName == null) {
+				System.out.println("WARN: picked null image");
+				return;
+			}
+
+			Image imag = ImgChain.chan.imageRepo.get(pick.imageName);
+
+			icon.setImage(imag);
+			lab.repaint();
 		});
 
 		fileMenu.add(changeImage);
