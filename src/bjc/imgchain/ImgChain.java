@@ -15,6 +15,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import bjc.imgchain.pipeline.Pipeline;
 
@@ -71,6 +73,8 @@ public class ImgChain {
 	 */
 	public static ImgChain chan;
 
+	public JFrame frame;
+
 	/**
 	 * Main method
 	 * 
@@ -80,6 +84,13 @@ public class ImgChain {
 	public static void main(String[] args) {
 		System.out.println("ImgChain Loading...");
 
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
+		
 		chan = new ImgChain();
 
 		chan.setupGUI();
@@ -97,7 +108,7 @@ public class ImgChain {
 	 * Setup the GUI
 	 */
 	private void setupGUI() {
-		JFrame frame = new JFrame("ImgChain v1");
+		frame = new JFrame("ImgChain v1");
 		frame.setLayout(new GridLayout(1, 1));
 
 		desktop = new JDesktopPane();

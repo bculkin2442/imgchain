@@ -16,10 +16,15 @@ public abstract class AbstractPixelStage extends AbstractPipelineStage {
 	public Image process(Image inp) {
 		BufferedImage buf = (BufferedImage) inp;
 
+		//BufferedImage res = new BufferedImage(buf.getWidth(), buf.getHeight(), BufferedImage.TYPE_INT_ARGB);
+
 		for (int y = 0; y < buf.getHeight(); y++) {
 			for (int x = 0; x < buf.getWidth(); x++) {
 				int[] pix = Utils.toARGBQuad(buf.getRGB(x, y));
-				buf.setRGB(x, y, Utils.fromARGBQuad(pix));
+
+				int[] processedPixel = processPixel(pix);
+
+				buf.setRGB(x, y, Utils.fromARGBQuad(processedPixel));
 			}
 		}
 

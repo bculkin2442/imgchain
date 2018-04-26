@@ -72,8 +72,7 @@ public class ImgViewer extends JInternalFrame {
 
 				e.printStackTrace();
 
-				JOptionPane.showInternalMessageDialog(null, msg, "Error loading image",
-						JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showInternalMessageDialog(null, msg, "Error loading image", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
@@ -91,7 +90,7 @@ public class ImgViewer extends JInternalFrame {
 	private JLabel lab;
 
 	public ImgViewer(ImgChain desk, File img) {
-		super("Image Viewer - " + img.getName(), true, true, true, true);
+		super("Image Viewer - " + img.getName(), false, true, true, true);
 		initted = false;
 
 		this.img = img;
@@ -155,11 +154,10 @@ public class ImgViewer extends JInternalFrame {
 
 				e.printStackTrace();
 
-				JOptionPane.showInternalMessageDialog(null, msg, "Error saving image",
-						JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showInternalMessageDialog(null, msg, "Error saving image", JOptionPane.ERROR_MESSAGE);
 			}
 		});
-		
+
 		JMenuItem storeImage = new JMenuItem("Stash Image to Memory");
 		storeImage.setMnemonic('T');
 		storeImage.addActionListener((ev) -> {
@@ -219,8 +217,12 @@ public class ImgViewer extends JInternalFrame {
 
 			Pipeline pipeline = ImgChain.chan.pipelineRepo.get(pick.pipeName);
 
-			icon.setImage(pipeline.process(Utils.toBuffered(icon.getImage())));
-			lab.repaint();
+			BufferedImage bufimg = Utils.toBuffered(icon.getImage());
+
+			Image processed = pipeline.process(bufimg);
+
+			Utils.displayImage(processed, "Pipeline Results");
+
 		});
 
 		editMenu.addSeparator();
@@ -250,8 +252,7 @@ public class ImgViewer extends JInternalFrame {
 
 			e.printStackTrace();
 
-			JOptionPane.showInternalMessageDialog(this, msg, "Error loading image",
-					JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showInternalMessageDialog(this, msg, "Error loading image", JOptionPane.ERROR_MESSAGE);
 		}
 
 		return lab;

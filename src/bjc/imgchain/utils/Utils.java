@@ -1,8 +1,15 @@
 package bjc.imgchain.utils;
 
 import java.awt.Graphics2D;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+
+import javax.swing.ImageIcon;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+
+import bjc.imgchain.ImgChain;
 
 public class Utils {
 	public static BufferedImage toBuffered(Image img) {
@@ -50,5 +57,22 @@ public class Utils {
 			}
 		}
 		return temp;
+	}
+
+	public static void displayImage(Image processed, String title) {
+		{
+			BufferedImage resimg = toBuffered(processed);
+	
+			JInternalFrame displayFrame = new JInternalFrame(title, false, true, true);
+			displayFrame.setSize(resimg.getWidth(), resimg.getHeight());
+			displayFrame.setLayout(new GridLayout(1, 1));
+	
+			JLabel displayLabel = new JLabel(new ImageIcon(resimg));
+	
+			displayFrame.add(displayLabel);
+	
+			ImgChain.chan.desktop.add(displayFrame);
+			displayFrame.setVisible(true);
+		}
 	}
 }

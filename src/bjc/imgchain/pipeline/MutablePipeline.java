@@ -1,8 +1,17 @@
 package bjc.imgchain.pipeline;
 
+import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.ImageIcon;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+
+import bjc.imgchain.ImgChain;
+import bjc.imgchain.utils.Utils;
 
 /**
  * An editable {@link Pipeline}
@@ -28,7 +37,7 @@ public class MutablePipeline implements Pipeline {
 	 * Create a new named mutable pipeline.
 	 * 
 	 * @param name
-	 *                The name of the pipeline.
+	 *            The name of the pipeline.
 	 */
 	public MutablePipeline(String name) {
 		stages = new ArrayList<>();
@@ -40,9 +49,15 @@ public class MutablePipeline implements Pipeline {
 	public Image process(Image input) {
 		Image proc = input;
 
+		int i = 1;
+
 		for (PipelineStage stage : stages) {
 			System.out.println("Applying stage " + stage.name());
+
 			proc = stage.process(proc);
+
+			Utils.displayImage(proc, "Pipeline Results - " + stage.name() + " - #" + i);
+
 			System.out.println("Applied stage " + stage.name());
 		}
 
@@ -63,7 +78,7 @@ public class MutablePipeline implements Pipeline {
 	 * Set the name of the pipeline.
 	 * 
 	 * @param nam
-	 *                The name of the pipeline.
+	 *            The name of the pipeline.
 	 */
 	public void name(String nam) {
 		name = nam;
@@ -73,7 +88,7 @@ public class MutablePipeline implements Pipeline {
 	 * Append a pipeline stage to the end of this pipeline.
 	 * 
 	 * @param stag
-	 *                The stage to add.
+	 *            The stage to add.
 	 */
 	public void addStage(PipelineStage stag) {
 		stages.add(stag);
@@ -83,7 +98,7 @@ public class MutablePipeline implements Pipeline {
 	 * Remove a pipeline stage.
 	 * 
 	 * @param stag
-	 *                The stage to remove.
+	 *            The stage to remove.
 	 */
 	public void removeStage(PipelineStage stag) {
 		stages.remove(stag);
@@ -93,7 +108,7 @@ public class MutablePipeline implements Pipeline {
 	 * Remove a pipeline stage by index.
 	 * 
 	 * @param idx
-	 *                The index of the stage to remove.
+	 *            The index of the stage to remove.
 	 */
 	public void removeStage(int idx) {
 		stages.remove(idx);

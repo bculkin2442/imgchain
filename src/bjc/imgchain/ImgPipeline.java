@@ -96,8 +96,9 @@ public class ImgPipeline extends JInternalFrame {
 			stageEditor.add(stag.getEditor(), BorderLayout.CENTER);
 			border.setTitle(stag.name());
 
-			// stageEditor.repaint();
+			stageEditor.repaint();
 		});
+		
 		JScrollPane stageScroll = new JScrollPane(stageList);
 
 		JPanel listPanel = new JPanel();
