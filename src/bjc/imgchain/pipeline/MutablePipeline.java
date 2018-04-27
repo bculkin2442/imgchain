@@ -37,7 +37,7 @@ public class MutablePipeline implements Pipeline {
 	 * Create a new named mutable pipeline.
 	 * 
 	 * @param name
-	 *            The name of the pipeline.
+	 *                The name of the pipeline.
 	 */
 	public MutablePipeline(String name) {
 		stages = new ArrayList<>();
@@ -52,7 +52,7 @@ public class MutablePipeline implements Pipeline {
 		int i = 1;
 
 		for (PipelineStage stage : stages) {
-			System.out.println("Applying stage " + stage.name());
+			System.out.println("Applying stage " + stage.name() + "(" + stage.toString() + ")");
 
 			proc = stage.process(proc);
 
@@ -78,7 +78,7 @@ public class MutablePipeline implements Pipeline {
 	 * Set the name of the pipeline.
 	 * 
 	 * @param nam
-	 *            The name of the pipeline.
+	 *                The name of the pipeline.
 	 */
 	public void name(String nam) {
 		name = nam;
@@ -88,9 +88,10 @@ public class MutablePipeline implements Pipeline {
 	 * Append a pipeline stage to the end of this pipeline.
 	 * 
 	 * @param stag
-	 *            The stage to add.
+	 *                The stage to add.
 	 */
 	public void addStage(PipelineStage stag) {
+		System.out.println("Adding stage " + stag);
 		stages.add(stag);
 	}
 
@@ -98,9 +99,10 @@ public class MutablePipeline implements Pipeline {
 	 * Remove a pipeline stage.
 	 * 
 	 * @param stag
-	 *            The stage to remove.
+	 *                The stage to remove.
 	 */
 	public void removeStage(PipelineStage stag) {
+		System.out.println("Removing stage " + stag);
 		stages.remove(stag);
 	}
 
@@ -108,10 +110,12 @@ public class MutablePipeline implements Pipeline {
 	 * Remove a pipeline stage by index.
 	 * 
 	 * @param idx
-	 *            The index of the stage to remove.
+	 *                The index of the stage to remove.
 	 */
 	public void removeStage(int idx) {
+		System.out.println("Removing stage # " + idx);
 		stages.remove(idx);
+		System.out.println("Pipeline contains " + stages.size() + " stages");
 	}
 
 }

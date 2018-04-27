@@ -88,15 +88,15 @@ public class GaussStage extends AbstractPipelineStage {
 		holder.setLayout(new GridLayout(3, 1));
 		
 		LabeledInputPanel mField = new LabeledInputPanel("Size of kernel", 3);
-		mField.addPropertyChangeListener("value", (ev) -> {
+		mField.field.addPropertyChangeListener("value", (ev) -> {
 			m = (Integer) mField.field.getValue();
 		});
 		LabeledInputPanel sigField = new LabeledInputPanel("Value for sigma", 3.0);
-		sigField.addPropertyChangeListener("value", (ev) -> {
+		sigField.field.addPropertyChangeListener("value", (ev) -> {
 			sig = (Double) sigField.field.getValue();
 		});
 		LabeledInputPanel kField = new LabeledInputPanel("Value for k", 1.0);
-		kField.addPropertyChangeListener("value", (ev) -> {
+		kField.field.addPropertyChangeListener("value", (ev) -> {
 			k = (Double) kField.field.getValue();
 		});
 		
@@ -106,5 +106,4 @@ public class GaussStage extends AbstractPipelineStage {
 		
 		return holder;
 	}
-
 }

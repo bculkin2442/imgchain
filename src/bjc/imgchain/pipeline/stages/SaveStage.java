@@ -24,7 +24,7 @@ public class SaveStage extends AbstractPipelineStage {
 	public SaveStage() {
 		super(StageType.IMGSINK);
 	}
-	
+
 	@Override
 	public Image process(Image inp) {
 		try {
@@ -39,7 +39,7 @@ public class SaveStage extends AbstractPipelineStage {
 			JOptionPane.showInternalMessageDialog(null, msg, "Error saving image",
 					JOptionPane.ERROR_MESSAGE);
 		}
-		
+
 		return inp;
 	}
 
@@ -85,5 +85,4 @@ public class SaveStage extends AbstractPipelineStage {
 
 		return holder;
 	}
-
 }

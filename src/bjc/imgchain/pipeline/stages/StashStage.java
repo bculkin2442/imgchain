@@ -35,11 +35,10 @@ public class StashStage extends AbstractPipelineStage {
 	@Override
 	public JComponent getEditor() {
 		LabeledInputPanel imgName = new LabeledInputPanel("Image name", "");
-		imgName.addPropertyChangeListener("value", (ev) -> {
+		imgName.field.addPropertyChangeListener("value", (ev) -> {
 			stashName = imgName.field.getText();
 		});
 		
 		return imgName;
 	}
-
 }

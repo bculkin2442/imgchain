@@ -46,7 +46,7 @@ public interface PipelineStage {
 	/**
 	 * Get an editor for this stage.
 	 * 
-	 * @return
+	 * @return The editor for the stage
 	 */
 	JComponent getEditor();
 }

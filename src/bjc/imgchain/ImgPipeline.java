@@ -93,12 +93,14 @@ public class ImgPipeline extends JInternalFrame {
 
 			stageEditor.removeAll();
 
-			stageEditor.add(stag.getEditor(), BorderLayout.CENTER);
-			border.setTitle(stag.name());
+			if (stag != null) {
+				stageEditor.add(stag.getEditor(), BorderLayout.CENTER);
+				border.setTitle(stag.name());
+			}
 
 			stageEditor.repaint();
 		});
-		
+
 		JScrollPane stageScroll = new JScrollPane(stageList);
 
 		JPanel listPanel = new JPanel();
@@ -148,6 +150,7 @@ public class ImgPipeline extends JInternalFrame {
 					 */
 					stag = new ColorSkewStage(.393, .769, .189, .349, .686, .168, .272, .534, .131);
 				}
+					break;
 				case "Negative": {
 					stag = new NegativeStage();
 				}
@@ -160,7 +163,7 @@ public class ImgPipeline extends JInternalFrame {
 					stag = new BrightnessStage();
 				}
 					break;
-				case "Threshold": {
+				case "Colorized Threshold": {
 					stag = new ThresholdStage();
 				}
 					break;

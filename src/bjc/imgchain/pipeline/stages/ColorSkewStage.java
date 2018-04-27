@@ -45,9 +45,9 @@ public class ColorSkewStage extends AbstractPixelStage {
 		ret[2] = (int) ((pix[1] * gr) + (pix[2] * gg) + (pix[3] * gb));
 		ret[3] = (int) ((pix[1] * br) + (pix[2] * bg) + (pix[3] * bb));
 
-		ret[1] = Math.min(255, ret[1]);
-		ret[2] = Math.min(255, ret[2]);
-		ret[3] = Math.min(255, ret[3]);
+		ret[1] = Math.max(Math.min(255, ret[1]), 0);
+		ret[2] = Math.max(Math.min(255, ret[2]), 0);
+		ret[3] = Math.max(Math.min(255, ret[3]), 0);
 		
 		return ret;
 	}
@@ -101,33 +101,42 @@ public class ColorSkewStage extends AbstractPixelStage {
 		bSkew.add(bpercGreen);
 		bSkew.add(bpercBlue);
 
-		rpercRed.addPropertyChangeListener("value", (ev) -> {
+		rpercRed.field.addPropertyChangeListener("value", (ev) -> {
+			System.out.println("TRIGGERED rr");
 			rr = (Double)rpercRed.field.getValue();
 		});
-		gpercRed.addPropertyChangeListener("value", (ev) -> {
+		gpercRed.field.addPropertyChangeListener("value", (ev) -> {
+			System.out.println("TRIGGERED rr");
 			gr = (Double)gpercRed.field.getValue();
 		});
-		bpercRed.addPropertyChangeListener("value", (ev) -> {
+		bpercRed.field.addPropertyChangeListener("value", (ev) -> {
+			System.out.println("TRIGGERED rr");
 			br = (Double)bpercRed.field.getValue();
 		});
 		
-		rpercGreen.addPropertyChangeListener("value", (ev) -> {
+		rpercGreen.field.addPropertyChangeListener("value", (ev) -> {
+			System.out.println("TRIGGERED rr");
 			rg = (Double)rpercGreen.field.getValue();
 		});
-		gpercGreen.addPropertyChangeListener("value", (ev) -> {
+		gpercGreen.field.addPropertyChangeListener("value", (ev) -> {
+			System.out.println("TRIGGERED rr");
 			gg = (Double)gpercGreen.field.getValue();
 		});
-		bpercGreen.addPropertyChangeListener("value", (ev) -> {
+		bpercGreen.field.addPropertyChangeListener("value", (ev) -> {
+			System.out.println("TRIGGERED rr");
 			bg = (Double)bpercGreen.field.getValue();
 		});
 		
-		rpercBlue.addPropertyChangeListener("value", (ev) -> {
+		rpercBlue.field.addPropertyChangeListener("value", (ev) -> {
+			System.out.println("TRIGGERED rr");
 			rb = (Double)rpercBlue.field.getValue();
 		});
-		gpercBlue.addPropertyChangeListener("value", (ev) -> {
+		gpercBlue.field.addPropertyChangeListener("value", (ev) -> {
+			System.out.println("TRIGGERED rr");
 			gb = (Double)gpercBlue.field.getValue();
 		});
-		bpercBlue.addPropertyChangeListener("value", (ev) -> {
+		bpercBlue.field.addPropertyChangeListener("value", (ev) -> {
+			System.out.println("TRIGGERED rr");
 			bb = (Double)bpercBlue.field.getValue();
 		});
 		
@@ -137,5 +146,4 @@ public class ColorSkewStage extends AbstractPixelStage {
 		
 		return holder;
 	}
-
 }

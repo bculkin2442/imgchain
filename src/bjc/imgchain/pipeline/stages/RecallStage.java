@@ -39,11 +39,10 @@ public class RecallStage extends AbstractPipelineStage {
 	public JComponent getEditor() {
 		ImgPickerPanel pan = new ImgPickerPanel();
 
-		pan.imgField.addPropertyChangeListener("value", (ev) -> {
+		pan.imgField.field.addPropertyChangeListener("value", (ev) -> {
 			stashName = pan.imgField.field.getText();
 		});
 
 		return pan;
 	}
-
 }

@@ -82,15 +82,15 @@ public class BrightnessStage extends AbstractPixelStage {
 		LabeledInputPanel bpercBlue = new LabeledInputPanel("+/- Blue", bb);
 		bSkew.add(bpercBlue);
 
-		rpercRed.addPropertyChangeListener("value", (ev) -> {
+		rpercRed.field.addPropertyChangeListener("value", (ev) -> {
 			rr = (Integer)rpercRed.field.getValue();
 		});
 		
-		gpercGreen.addPropertyChangeListener("value", (ev) -> {
+		gpercGreen.field.addPropertyChangeListener("value", (ev) -> {
 			gg = (Integer)gpercGreen.field.getValue();
 		});
 		
-		bpercBlue.addPropertyChangeListener("value", (ev) -> {
+		bpercBlue.field.addPropertyChangeListener("value", (ev) -> {
 			bb = (Integer)bpercBlue.field.getValue();
 		});
 		
@@ -100,5 +100,4 @@ public class BrightnessStage extends AbstractPixelStage {
 		
 		return holder;
 	}
-
 }

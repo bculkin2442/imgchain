@@ -52,11 +52,10 @@ public class AddMaskStage extends AbstractPipelineStage {
 	public JComponent getEditor() {
 		ImgPickerPanel pan = new ImgPickerPanel("Mask name");
 		
-		pan.imgField.addPropertyChangeListener("value", (ev) -> {
+		pan.imgField.field.addPropertyChangeListener("value", (ev) -> {
 			masqueName = pan.imgField.field.getText();
 		});
 
 		return pan;
 	}
-
 }

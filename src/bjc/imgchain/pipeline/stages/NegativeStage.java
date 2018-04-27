@@ -28,6 +28,5 @@ public class NegativeStage extends AbstractPixelStage {
 	@Override
 	public int[] processPixel(int[] pix) {
 		return new int[] { pix[0], 255 - pix[1], 255 - pix[2], 255 - pix[3] };
-	}
-
+	}	
 }

@@ -83,5 +83,4 @@ public class LoadStage extends AbstractPipelineStage {
 
 		return holder;
 	}
-
 }

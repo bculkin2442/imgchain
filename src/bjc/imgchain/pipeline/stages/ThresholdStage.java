@@ -46,12 +46,12 @@ public class ThresholdStage extends AbstractPixelStage {
 
 	@Override
 	public String name() {
-		return "Tint";
+		return "Colorized Threshold";
 	}
 
 	@Override
 	public String description() {
-		return "Add/remove colors";
+		return "Convert image into three-tone";
 	}
 
 	@Override
@@ -73,7 +73,6 @@ public class ThresholdStage extends AbstractPixelStage {
 
 		LabeledInputPanel rpercRed = new LabeledInputPanel("Red", redThreshold);
 		rSkew.add(rpercRed);
-		;
 
 		LabeledInputPanel gpercGreen = new LabeledInputPanel("Green", greenThreshold);
 		gSkew.add(gpercGreen);
@@ -81,15 +80,15 @@ public class ThresholdStage extends AbstractPixelStage {
 		LabeledInputPanel bpercBlue = new LabeledInputPanel("Blue", blueThreshold);
 		bSkew.add(bpercBlue);
 
-		rpercRed.addPropertyChangeListener("value", (ev) -> {
+		rpercRed.field.addPropertyChangeListener("value", (ev) -> {
 			redThreshold = (Integer) rpercRed.field.getValue();
 		});
 
-		gpercGreen.addPropertyChangeListener("value", (ev) -> {
+		gpercGreen.field.addPropertyChangeListener("value", (ev) -> {
 			greenThreshold = (Integer) gpercGreen.field.getValue();
 		});
 
-		bpercBlue.addPropertyChangeListener("value", (ev) -> {
+		bpercBlue.field.addPropertyChangeListener("value", (ev) -> {
 			blueThreshold = (Integer) bpercBlue.field.getValue();
 		});
 
@@ -99,5 +98,4 @@ public class ThresholdStage extends AbstractPixelStage {
 
 		return holder;
 	}
-
 }

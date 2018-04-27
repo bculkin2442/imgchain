@@ -71,5 +71,4 @@ public class PipeStage extends AbstractPipelineStage {
 		
 		return holder;
 	}
-
 }

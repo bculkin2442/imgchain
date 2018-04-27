@@ -41,5 +41,4 @@ public class GreyscaleStage extends AbstractPixelStage {
 	public JComponent getEditor() {
 		return new JLabel("No configuration possible");
 	}
-
 }
