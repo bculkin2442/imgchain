@@ -31,6 +31,10 @@ public class ImgChain {
 	 * Action to perform when loading an image.
 	 */
 	private final class LoadImageListener implements ActionListener {
+		public LoadImageListener() {
+			// TODO Auto-generated constructor stub
+		}
+
 		@Override
 		public void actionPerformed(ActionEvent ev) {
 			JFileChooser jfc = new JFileChooser();
