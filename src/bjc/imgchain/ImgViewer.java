@@ -24,7 +24,7 @@ public class ImgViewer extends JInternalFrame {
 	private final class ReloadImageListener implements ActionListener {
 		private final File img;
 
-		private ReloadImageListener(File img) {
+		ReloadImageListener(File img) {
 			this.img = img;
 		}
 
@@ -46,6 +46,10 @@ public class ImgViewer extends JInternalFrame {
 	}
 
 	private final class ChangeImageListener implements ActionListener {
+		public ChangeImageListener() {
+			// TODO Auto-generated constructor stub
+		}
+
 		@Override
 		public void actionPerformed(ActionEvent ev) {
 			JFileChooser jfc = new JFileChooser();
