@@ -3,7 +3,6 @@ package bjc.imgchain.pipeline;
 import java.awt.Image;
 
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 
 /**
  * A stage in an image processing pipeline.

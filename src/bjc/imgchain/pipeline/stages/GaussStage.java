@@ -13,8 +13,8 @@ import bjc.imgchain.pipeline.StageType;
 import bjc.imgchain.utils.LabeledInputPanel;
 
 public class GaussStage extends AbstractPipelineStage {
-	private int m;
-	private double sig, k;
+	private int	m;
+	private double	sig, k;
 
 	public GaussStage() {
 		super(StageType.IMGTRANS);
@@ -86,7 +86,7 @@ public class GaussStage extends AbstractPipelineStage {
 	public JComponent getEditor() {
 		JPanel holder = new JPanel();
 		holder.setLayout(new GridLayout(3, 1));
-		
+
 		LabeledInputPanel mField = new LabeledInputPanel("Size of kernel", 3);
 		mField.field.addPropertyChangeListener("value", (ev) -> {
 			m = (Integer) mField.field.getValue();
@@ -99,11 +99,11 @@ public class GaussStage extends AbstractPipelineStage {
 		kField.field.addPropertyChangeListener("value", (ev) -> {
 			k = (Double) kField.field.getValue();
 		});
-		
+
 		holder.add(mField);
 		holder.add(sigField);
 		holder.add(kField);
-		
+
 		return holder;
 	}
 }

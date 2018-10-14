@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.MessageFormat;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -15,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.CompoundBorder;
 import javax.swing.border.TitledBorder;
 
 import bjc.imgchain.pipeline.MutablePipeline;
@@ -86,8 +84,7 @@ public class ImgPipeline extends JInternalFrame {
 
 		JList<PipelineStage> stageList = new JList<>(mod);
 		stageList.addListSelectionListener(e -> {
-			if (e.getValueIsAdjusting())
-				return;
+			if (e.getValueIsAdjusting()) return;
 
 			PipelineStage stag = stageList.getSelectedValue();
 
@@ -145,8 +142,9 @@ public class ImgPipeline extends JInternalFrame {
 					break;
 				case "Sepia": {
 					/*
-					 * NOTE: these values were pulled from somewhere on the internet, and tweaked
-					 * slightly to work better.
+					 * NOTE: these values were pulled from
+					 * somewhere on the internet, and
+					 * tweaked slightly to work better.
 					 */
 					stag = new ColorSkewStage(.393, .769, .189, .349, .686, .168, .272, .534, .131);
 				}

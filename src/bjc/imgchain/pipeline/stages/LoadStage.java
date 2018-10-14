@@ -22,7 +22,7 @@ public class LoadStage extends AbstractPipelineStage {
 	public LoadStage() {
 		super(StageType.IMGSOURCE);
 	}
-	
+
 	@Override
 	public Image process(Image inp) {
 		try {
@@ -37,7 +37,7 @@ public class LoadStage extends AbstractPipelineStage {
 			JOptionPane.showInternalMessageDialog(null, msg, "Error loading image",
 					JOptionPane.ERROR_MESSAGE);
 		}
-		
+
 		return inp;
 	}
 

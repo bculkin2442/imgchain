@@ -24,9 +24,9 @@ public class LabeledInputPanel extends JPanel {
 	 * Create a new labeled input component.
 	 * 
 	 * @param label
-	 *            The label for the component.
+	 *                The label for the component.
 	 * @param val
-	 *            The initial value for the field.
+	 *                The initial value for the field.
 	 */
 	public LabeledInputPanel(String label, Object val) {
 		super();

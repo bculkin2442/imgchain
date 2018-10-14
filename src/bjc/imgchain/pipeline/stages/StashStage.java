@@ -10,15 +10,15 @@ import bjc.imgchain.utils.LabeledInputPanel;
 
 public class StashStage extends AbstractPipelineStage {
 	private String stashName;
-	
+
 	public StashStage() {
 		super(StageType.IMGSOURCE);
 	}
-	
+
 	@Override
 	public Image process(Image inp) {
 		ImgChain.chan.addImage(stashName, inp);
-		
+
 		return inp;
 	}
 
@@ -31,14 +31,14 @@ public class StashStage extends AbstractPipelineStage {
 	public String description() {
 		return "Stash image to memory";
 	}
-	
+
 	@Override
 	public JComponent getEditor() {
 		LabeledInputPanel imgName = new LabeledInputPanel("Image name", "");
 		imgName.field.addPropertyChangeListener("value", (ev) -> {
 			stashName = imgName.field.getText();
 		});
-		
+
 		return imgName;
 	}
 }

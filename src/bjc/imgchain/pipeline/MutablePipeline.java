@@ -1,16 +1,9 @@
 package bjc.imgchain.pipeline;
 
-import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ImageIcon;
-import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
-
-import bjc.imgchain.ImgChain;
 import bjc.imgchain.utils.Utils;
 
 /**

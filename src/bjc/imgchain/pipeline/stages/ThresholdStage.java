@@ -1,7 +1,6 @@
 package bjc.imgchain.pipeline.stages;
 
 import java.awt.GridLayout;
-import java.awt.Image;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -24,9 +23,9 @@ public class ThresholdStage extends AbstractPixelStage {
 		this.blueThreshold = bb;
 	}
 
-	private int redThreshold;
-	private int greenThreshold;
-	private int blueThreshold;
+	private int	redThreshold;
+	private int	greenThreshold;
+	private int	blueThreshold;
 
 	@Override
 	public int[] processPixel(int[] pix) {

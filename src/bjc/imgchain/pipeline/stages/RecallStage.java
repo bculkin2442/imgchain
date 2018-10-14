@@ -1,17 +1,12 @@
 package bjc.imgchain.pipeline.stages;
 
-import java.awt.BorderLayout;
 import java.awt.Image;
 
-import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 
 import bjc.imgchain.ImgChain;
-import bjc.imgchain.ImgPicker;
 import bjc.imgchain.ImgPickerPanel;
 import bjc.imgchain.pipeline.StageType;
-import bjc.imgchain.utils.LabeledInputPanel;
 
 public class RecallStage extends AbstractPipelineStage {
 	private String stashName;

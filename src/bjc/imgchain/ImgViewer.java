@@ -4,8 +4,6 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -13,11 +11,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 import bjc.imgchain.pipeline.Pipeline;
 import bjc.imgchain.pipeline.PipelinePicker;
-import bjc.imgchain.utils.SimpleInputPanel;
 import bjc.imgchain.utils.Utils;
 
 public class ImgViewer extends JInternalFrame {
@@ -76,7 +80,8 @@ public class ImgViewer extends JInternalFrame {
 
 				e.printStackTrace();
 
-				JOptionPane.showInternalMessageDialog(null, msg, "Error loading image", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showInternalMessageDialog(null, msg, "Error loading image",
+						JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
@@ -158,7 +163,8 @@ public class ImgViewer extends JInternalFrame {
 
 				e.printStackTrace();
 
-				JOptionPane.showInternalMessageDialog(null, msg, "Error saving image", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showInternalMessageDialog(null, msg, "Error saving image",
+						JOptionPane.ERROR_MESSAGE);
 			}
 		});
 
@@ -167,8 +173,7 @@ public class ImgViewer extends JInternalFrame {
 		storeImage.addActionListener((ev) -> {
 			String inp = JOptionPane.showInternalInputDialog(this, "Enter name to store image under");
 
-			if (inp == null)
-				return;
+			if (inp == null) return;
 
 			inp = inp.trim();
 
@@ -256,7 +261,8 @@ public class ImgViewer extends JInternalFrame {
 
 			e.printStackTrace();
 
-			JOptionPane.showInternalMessageDialog(this, msg, "Error loading image", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showInternalMessageDialog(this, msg, "Error loading image",
+					JOptionPane.ERROR_MESSAGE);
 		}
 
 		return lab;

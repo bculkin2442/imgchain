@@ -62,15 +62,15 @@ public class Utils {
 	public static void displayImage(Image processed, String title) {
 		{
 			BufferedImage resimg = toBuffered(processed);
-	
+
 			JInternalFrame displayFrame = new JInternalFrame(title, false, true, true);
 			displayFrame.setSize(resimg.getWidth(), resimg.getHeight());
 			displayFrame.setLayout(new GridLayout(1, 1));
-	
+
 			JLabel displayLabel = new JLabel(new ImageIcon(resimg));
-	
+
 			displayFrame.add(displayLabel);
-	
+
 			ImgChain.chan.desktop.add(displayFrame);
 			displayFrame.setVisible(true);
 		}

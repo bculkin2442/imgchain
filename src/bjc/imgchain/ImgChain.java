@@ -94,7 +94,7 @@ public class ImgChain {
 				| UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
-		
+
 		chan = new ImgChain();
 
 		chan.setupGUI();

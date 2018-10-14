@@ -8,15 +8,15 @@ import javax.swing.JPanel;
 import bjc.imgchain.utils.LabeledInputPanel;
 
 public class ImgPickerPanel extends JPanel {
-	public String stashName;
-	public LabeledInputPanel imgField;
+	public String			stashName;
+	public LabeledInputPanel	imgField;
 
 	public ImgPickerPanel() {
 		setLayout(new BorderLayout());
 
 		setupGUI("Image name");
 	}
-	
+
 	public ImgPickerPanel(String lab) {
 		setLayout(new BorderLayout());
 

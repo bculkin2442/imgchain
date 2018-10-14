@@ -68,7 +68,7 @@ public class PipeStage extends AbstractPipelineStage {
 		holder.add(pipeLabel, BorderLayout.LINE_START);
 		holder.add(pipeField, BorderLayout.CENTER);
 		holder.add(pipeButton, BorderLayout.LINE_END);
-		
+
 		return holder;
 	}
 }

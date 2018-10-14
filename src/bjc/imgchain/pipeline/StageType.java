@@ -2,6 +2,7 @@ package bjc.imgchain.pipeline;
 
 /**
  * The type of stage a given {@link PipelineStage} is.
+ * 
  * @author acm
  *
  */

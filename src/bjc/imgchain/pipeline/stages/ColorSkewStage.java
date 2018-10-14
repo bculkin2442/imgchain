@@ -1,7 +1,6 @@
 package bjc.imgchain.pipeline.stages;
 
 import java.awt.GridLayout;
-import java.awt.Image;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -16,10 +15,10 @@ public class ColorSkewStage extends AbstractPixelStage {
 		this(1, 0, 0, 0, 1, 0, 0, 0, 1);
 	}
 
-	public ColorSkewStage(double rr, double rg, double rb, double gr, double gg, double gb,
-			double br, double bg, double bb) {
+	public ColorSkewStage(double rr, double rg, double rb, double gr, double gg, double gb, double br, double bg,
+			double bb) {
 		super(StageType.IMGTRANS);
-		
+
 		this.rr = rr;
 		this.rg = rg;
 		this.rb = rb;
@@ -31,10 +30,9 @@ public class ColorSkewStage extends AbstractPixelStage {
 		this.bb = bb;
 	}
 
-
-	private double rr, rg, rb;
-	private double gr, gg, gb;
-	private double br, bg, bb;
+	private double	rr, rg, rb;
+	private double	gr, gg, gb;
+	private double	br, bg, bb;
 
 	@Override
 	public int[] processPixel(int[] pix) {
@@ -48,7 +46,7 @@ public class ColorSkewStage extends AbstractPixelStage {
 		ret[1] = Math.max(Math.min(255, ret[1]), 0);
 		ret[2] = Math.max(Math.min(255, ret[2]), 0);
 		ret[3] = Math.max(Math.min(255, ret[3]), 0);
-		
+
 		return ret;
 	}
 
@@ -70,15 +68,14 @@ public class ColorSkewStage extends AbstractPixelStage {
 		JPanel rSkew = new JPanel();
 		rSkew.setLayout(new GridLayout(1, 3));
 		rSkew.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED), "Red Balance"));
-		
+
 		JPanel gSkew = new JPanel();
 		gSkew.setLayout(new GridLayout(1, 3));
 		gSkew.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED), "Green Balance"));
-		
+
 		JPanel bSkew = new JPanel();
 		bSkew.setLayout(new GridLayout(1, 3));
 		bSkew.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED), "Blue Balance"));
-		
 
 		LabeledInputPanel rpercRed = new LabeledInputPanel("% Red", rr);
 		LabeledInputPanel rpercGreen = new LabeledInputPanel("% Green", rg);
@@ -103,47 +100,47 @@ public class ColorSkewStage extends AbstractPixelStage {
 
 		rpercRed.field.addPropertyChangeListener("value", (ev) -> {
 			System.out.println("TRIGGERED rr");
-			rr = (Double)rpercRed.field.getValue();
+			rr = (Double) rpercRed.field.getValue();
 		});
 		gpercRed.field.addPropertyChangeListener("value", (ev) -> {
 			System.out.println("TRIGGERED rr");
-			gr = (Double)gpercRed.field.getValue();
+			gr = (Double) gpercRed.field.getValue();
 		});
 		bpercRed.field.addPropertyChangeListener("value", (ev) -> {
 			System.out.println("TRIGGERED rr");
-			br = (Double)bpercRed.field.getValue();
+			br = (Double) bpercRed.field.getValue();
 		});
-		
+
 		rpercGreen.field.addPropertyChangeListener("value", (ev) -> {
 			System.out.println("TRIGGERED rr");
-			rg = (Double)rpercGreen.field.getValue();
+			rg = (Double) rpercGreen.field.getValue();
 		});
 		gpercGreen.field.addPropertyChangeListener("value", (ev) -> {
 			System.out.println("TRIGGERED rr");
-			gg = (Double)gpercGreen.field.getValue();
+			gg = (Double) gpercGreen.field.getValue();
 		});
 		bpercGreen.field.addPropertyChangeListener("value", (ev) -> {
 			System.out.println("TRIGGERED rr");
-			bg = (Double)bpercGreen.field.getValue();
+			bg = (Double) bpercGreen.field.getValue();
 		});
-		
+
 		rpercBlue.field.addPropertyChangeListener("value", (ev) -> {
 			System.out.println("TRIGGERED rr");
-			rb = (Double)rpercBlue.field.getValue();
+			rb = (Double) rpercBlue.field.getValue();
 		});
 		gpercBlue.field.addPropertyChangeListener("value", (ev) -> {
 			System.out.println("TRIGGERED rr");
-			gb = (Double)gpercBlue.field.getValue();
+			gb = (Double) gpercBlue.field.getValue();
 		});
 		bpercBlue.field.addPropertyChangeListener("value", (ev) -> {
 			System.out.println("TRIGGERED rr");
-			bb = (Double)bpercBlue.field.getValue();
+			bb = (Double) bpercBlue.field.getValue();
 		});
-		
+
 		holder.add(rSkew);
 		holder.add(gSkew);
 		holder.add(bSkew);
-		
+
 		return holder;
 	}
 }

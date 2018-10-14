@@ -26,11 +26,11 @@ public class AddMaskStage extends AbstractPipelineStage {
 			for (int x = 0; x < buf.getWidth(); x++) {
 				int[] pix = Utils.toARGBQuad(buf.getRGB(x, y));
 				int[] msq = Utils.toARGBQuad(masque.getRGB(x, y));
-				
+
 				pix[1] += msq[1];
 				pix[2] += msq[2];
 				pix[3] += msq[3];
-				
+
 				buf.setRGB(x, y, Utils.fromARGBQuad(pix));
 			}
 		}
@@ -47,11 +47,11 @@ public class AddMaskStage extends AbstractPipelineStage {
 	public String description() {
 		return "Add two images togethers";
 	}
-	
+
 	@Override
 	public JComponent getEditor() {
 		ImgPickerPanel pan = new ImgPickerPanel("Mask name");
-		
+
 		pan.imgField.field.addPropertyChangeListener("value", (ev) -> {
 			masqueName = pan.imgField.field.getText();
 		});

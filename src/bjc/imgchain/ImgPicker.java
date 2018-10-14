@@ -10,8 +10,6 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import bjc.imgchain.ImgChain;
-
 public class ImgPicker extends JDialog {
 	private static final long serialVersionUID = 1L;
 
