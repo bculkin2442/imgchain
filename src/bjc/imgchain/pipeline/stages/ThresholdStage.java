@@ -23,9 +23,9 @@ public class ThresholdStage extends AbstractPixelStage {
 		this.blueThreshold = bb;
 	}
 
-	private int	redThreshold;
-	private int	greenThreshold;
-	private int	blueThreshold;
+	private int redThreshold;
+	private int greenThreshold;
+	private int blueThreshold;
 
 	@Override
 	public int[] processPixel(int[] pix) {

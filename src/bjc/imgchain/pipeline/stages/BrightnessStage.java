@@ -23,9 +23,9 @@ public class BrightnessStage extends AbstractPixelStage {
 		this.bb = bb;
 	}
 
-	private int	rr;
-	private int	gg;
-	private int	bb;
+	private int rr;
+	private int gg;
+	private int bb;
 
 	@Override
 	public int[] processPixel(int[] pix) {

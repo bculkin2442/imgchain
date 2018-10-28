@@ -6,6 +6,11 @@ import java.awt.image.BufferedImage;
 import bjc.imgchain.pipeline.StageType;
 import bjc.imgchain.utils.Utils;
 
+/**
+ * An abstract stage that processes images pixel-by-pixel.
+ * @author bjculkin
+ *
+ */
 public abstract class AbstractPixelStage extends AbstractPipelineStage {
 
 	protected AbstractPixelStage(StageType type) {
@@ -31,5 +36,10 @@ public abstract class AbstractPixelStage extends AbstractPipelineStage {
 		return res;
 	}
 
+	/**
+	 * Process a pixel of data.
+	 * @param pix The pixel, as an array in the form (A, R, G, B)
+	 * @return The new pixel, as an array in the form (A, R, G, B)
+	 */
 	public abstract int[] processPixel(int[] pix);
 }

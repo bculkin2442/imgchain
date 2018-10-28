@@ -7,9 +7,23 @@ import javax.swing.JPanel;
 
 import bjc.imgchain.utils.LabeledInputPanel;
 
+/**
+ * Panel for picking an image.
+ * 
+ * @author bjculkin
+ *
+ */
 public class ImgPickerPanel extends JPanel {
-	public String			stashName;
-	public LabeledInputPanel	imgField;
+	private static final long serialVersionUID = 4567876787110596208L;
+
+	/**
+	 * The place to stash the image.
+	 */
+	public String stashName;
+	/**
+	 * The field to get the image from.
+	 */
+	public LabeledInputPanel imgField;
 
 	public ImgPickerPanel() {
 		setLayout(new BorderLayout());

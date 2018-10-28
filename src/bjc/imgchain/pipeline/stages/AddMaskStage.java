@@ -10,9 +10,17 @@ import bjc.imgchain.ImgPickerPanel;
 import bjc.imgchain.pipeline.StageType;
 import bjc.imgchain.utils.Utils;
 
+/**
+ * Mask an image onto another one.
+ * @author bjculkin
+ *
+ */
 public class AddMaskStage extends AbstractPipelineStage {
 	private String masqueName;
 
+	/**
+	 * Create a masking stage.
+	 */
 	public AddMaskStage() {
 		super(StageType.IMGTRANS);
 	}

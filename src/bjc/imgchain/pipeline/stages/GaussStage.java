@@ -13,8 +13,8 @@ import bjc.imgchain.pipeline.StageType;
 import bjc.imgchain.utils.LabeledInputPanel;
 
 public class GaussStage extends AbstractPipelineStage {
-	private int	m;
-	private double	sig, k;
+	private int m;
+	private double sig, k;
 
 	public GaussStage() {
 		super(StageType.IMGTRANS);
@@ -59,6 +59,8 @@ public class GaussStage extends AbstractPipelineStage {
 			}
 		}
 
+		// Shouldn't we be doing something with this?
+		@SuppressWarnings("unused")
 		float invsum = 1 / sum;
 
 		float[] dat = new float[m * m];

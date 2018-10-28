@@ -30,9 +30,9 @@ public class ColorSkewStage extends AbstractPixelStage {
 		this.bb = bb;
 	}
 
-	private double	rr, rg, rb;
-	private double	gr, gg, gb;
-	private double	br, bg, bb;
+	private double rr, rg, rb;
+	private double gr, gg, gb;
+	private double br, bg, bb;
 
 	@Override
 	public int[] processPixel(int[] pix) {
