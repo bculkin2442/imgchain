@@ -18,7 +18,7 @@ import javax.swing.border.TitledBorder;
 
 import bjc.imgchain.pipeline.MutablePipeline;
 import bjc.imgchain.pipeline.PipelineStage;
-import bjc.imgchain.pipeline.stages.BrightnessStage;
+import bjc.imgchain.pipeline.stages.TintingStage;
 import bjc.imgchain.pipeline.stages.ColorSkewStage;
 import bjc.imgchain.pipeline.stages.GaussStage;
 import bjc.imgchain.pipeline.stages.GreyscaleStage;
@@ -158,7 +158,7 @@ public class ImgPipeline extends JInternalFrame {
 				}
 					break;
 				case "Tint": {
-					stag = new BrightnessStage();
+					stag = new TintingStage();
 				}
 					break;
 				case "Colorized Threshold": {

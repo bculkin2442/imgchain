@@ -10,12 +10,31 @@ import javax.swing.border.TitledBorder;
 import bjc.imgchain.pipeline.StageType;
 import bjc.imgchain.utils.LabeledInputPanel;
 
-public class BrightnessStage extends AbstractPixelStage {
-	public BrightnessStage() {
+/**
+ * A stage to tint an image, by increasing/decreasing the values of the color components.
+ * 
+ * @author Ben Culkin
+ *
+ */
+public class TintingStage extends AbstractPixelStage {
+	/**
+	 * Create a new brightness stage with no effect.
+	 */
+	public TintingStage() {
 		this(0, 0, 0);
 	}
 
-	public BrightnessStage(int rr, int gg, int bb) {
+	/**
+	 * Create a new brightness stage with the specified effect.
+	 * 
+	 * @param rr
+	 *           The value to change the red component by.
+	 * @param gg
+	 *           The value to change the green component by.
+	 * @param bb
+	 *           The value to change the blue component by.
+	 */
+	public TintingStage(int rr, int gg, int bb) {
 		super(StageType.IMGTRANS);
 
 		this.rr = rr;
@@ -60,15 +79,18 @@ public class BrightnessStage extends AbstractPixelStage {
 
 		JPanel rSkew = new JPanel();
 		rSkew.setLayout(new GridLayout(1, 3));
-		rSkew.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED), "Red Balance"));
+		rSkew.setBorder(
+				new TitledBorder(new BevelBorder(BevelBorder.LOWERED), "Red Balance"));
 
 		JPanel gSkew = new JPanel();
 		gSkew.setLayout(new GridLayout(1, 3));
-		gSkew.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED), "Green Balance"));
+		gSkew.setBorder(
+				new TitledBorder(new BevelBorder(BevelBorder.LOWERED), "Green Balance"));
 
 		JPanel bSkew = new JPanel();
 		bSkew.setLayout(new GridLayout(1, 3));
-		bSkew.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED), "Blue Balance"));
+		bSkew.setBorder(
+				new TitledBorder(new BevelBorder(BevelBorder.LOWERED), "Blue Balance"));
 
 		LabeledInputPanel rpercRed = new LabeledInputPanel("+/- Red", rr);
 		rSkew.add(rpercRed);
