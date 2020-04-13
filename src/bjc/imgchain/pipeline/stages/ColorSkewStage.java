@@ -10,11 +10,31 @@ import javax.swing.border.TitledBorder;
 import bjc.imgchain.pipeline.StageType;
 import bjc.imgchain.utils.LabeledInputPanel;
 
+/**
+ * Stage that will perform a 'color skew' or adjust the color balance of the image.
+ * @author Ben Culkin
+ *
+ */
 public class ColorSkewStage extends AbstractPixelStage {
+	/**
+	 * Create a new stage that does nothing.
+	 */
 	public ColorSkewStage() {
 		this(1, 0, 0, 0, 1, 0, 0, 0, 1);
 	}
 
+	/**
+	 * Create a color skew stage with the given values.
+	 * @param rr The percentage of input red that should be in the output red.
+	 * @param rg The percentage of input green that should be in the output red..
+	 * @param rb The percentage of input blue that should be in the output red.
+	 * @param gr The percentage of input red that should be in the output green.
+	 * @param gg The percentage of input green that should be in the output green.
+	 * @param gb The percentage of input blue that should be in the output green.
+	 * @param br The percentage of input red that should be in the output blue.
+	 * @param bg The percentage of input green that should be in the output blue.
+	 * @param bb The percentage of input blue that should be in the output blue.
+	 */
 	public ColorSkewStage(double rr, double rg, double rb, double gr, double gg, double gb, double br, double bg,
 			double bb) {
 		super(StageType.IMGTRANS);
@@ -99,41 +119,32 @@ public class ColorSkewStage extends AbstractPixelStage {
 		bSkew.add(bpercBlue);
 
 		rpercRed.field.addPropertyChangeListener("value", (ev) -> {
-			System.out.println("TRIGGERED rr");
 			rr = (Double) rpercRed.field.getValue();
 		});
 		gpercRed.field.addPropertyChangeListener("value", (ev) -> {
-			System.out.println("TRIGGERED rr");
 			gr = (Double) gpercRed.field.getValue();
 		});
 		bpercRed.field.addPropertyChangeListener("value", (ev) -> {
-			System.out.println("TRIGGERED rr");
 			br = (Double) bpercRed.field.getValue();
 		});
 
 		rpercGreen.field.addPropertyChangeListener("value", (ev) -> {
-			System.out.println("TRIGGERED rr");
 			rg = (Double) rpercGreen.field.getValue();
 		});
 		gpercGreen.field.addPropertyChangeListener("value", (ev) -> {
-			System.out.println("TRIGGERED rr");
 			gg = (Double) gpercGreen.field.getValue();
 		});
 		bpercGreen.field.addPropertyChangeListener("value", (ev) -> {
-			System.out.println("TRIGGERED rr");
 			bg = (Double) bpercGreen.field.getValue();
 		});
 
 		rpercBlue.field.addPropertyChangeListener("value", (ev) -> {
-			System.out.println("TRIGGERED rr");
 			rb = (Double) rpercBlue.field.getValue();
 		});
 		gpercBlue.field.addPropertyChangeListener("value", (ev) -> {
-			System.out.println("TRIGGERED rr");
 			gb = (Double) gpercBlue.field.getValue();
 		});
 		bpercBlue.field.addPropertyChangeListener("value", (ev) -> {
-			System.out.println("TRIGGERED rr");
 			bb = (Double) bpercBlue.field.getValue();
 		});
 
