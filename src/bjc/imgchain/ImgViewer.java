@@ -24,20 +24,26 @@ import bjc.imgchain.pipeline.Pipeline;
 import bjc.imgchain.pipeline.PipelinePicker;
 import bjc.imgchain.utils.Utils;
 
+/**
+ * Image viewer panel.
+ * 
+ * @author Ben Culkin
+ *
+ */
 public class ImgViewer extends JInternalFrame {
 	private final class ReloadImageListener implements ActionListener {
-		private final File img;
+		private final File imge;
 
 		ReloadImageListener(File img) {
-			this.img = img;
+			this.imge = img;
 		}
 
 		@Override
 		public void actionPerformed(ActionEvent ev) {
 			try {
-				icon.setImage(ImageIO.read(img));
+				icon.setImage(ImageIO.read(imge));
 			} catch (IOException e) {
-				String msg = String.format("Error: Could not load image %s", img.getPath());
+				String msg = String.format("Error: Could not load image %s", imge.getPath());
 
 				System.out.printf("%s\n", msg);
 
@@ -51,7 +57,7 @@ public class ImgViewer extends JInternalFrame {
 
 	private final class ChangeImageListener implements ActionListener {
 		public ChangeImageListener() {
-			// TODO Auto-generated constructor stub
+			// TODO Oct 5th, 2020 - Ben Culkin - Do I need to do something here?
 		}
 
 		@Override
@@ -98,6 +104,12 @@ public class ImgViewer extends JInternalFrame {
 
 	private JLabel lab;
 
+	/**
+	 * Create a new image viewer.
+	 * 
+	 * @param desk The desktop.
+	 * @param img The image being viewed.
+	 */
 	public ImgViewer(ImgChain desk, File img) {
 		super("Image Viewer - " + img.getName(), false, true, true, true);
 		initted = false;
@@ -243,19 +255,19 @@ public class ImgViewer extends JInternalFrame {
 		return bar;
 	}
 
-	private JLabel loadLabel(File img) {
-		JLabel lab = null;
+	private JLabel loadLabel(File imge) {
+		JLabel labl = null;
 
 		try {
-			URL imgURL = img.toURI().toURL();
+			URL imgURL = imge.toURI().toURL();
 
 			icon = new ImageIcon(imgURL);
 
 			setSize(icon.getIconWidth(), icon.getIconHeight());
 
-			lab = new JLabel(icon);
+			labl = new JLabel(icon);
 		} catch (MalformedURLException e) {
-			String msg = String.format("Error: Could not load image %s", img.getPath());
+			String msg = String.format("Error: Could not load image %s", imge.getPath());
 
 			System.out.printf("%s\n", msg);
 
@@ -265,9 +277,14 @@ public class ImgViewer extends JInternalFrame {
 					JOptionPane.ERROR_MESSAGE);
 		}
 
-		return lab;
+		return labl;
 	}
 
+	/**
+	 * Has this image viewer been initialized?
+	 * 
+	 * @return The viewer has been initialized.
+	 */
 	public boolean isInitialized() {
 		return initted;
 	}

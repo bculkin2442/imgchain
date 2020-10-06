@@ -10,11 +10,23 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+/**
+ * Image picker dialog.
+ * 
+ * @author Ben Culkin
+ *
+ */
 public class ImgPicker extends JDialog {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Nane of the picked image.
+	 */
 	public String imageName;
 
+	/**
+	 * Create a new image picker.
+	 */
 	public ImgPicker() {
 		super();
 

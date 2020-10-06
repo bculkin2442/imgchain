@@ -8,9 +8,17 @@ import bjc.imgchain.ImgChain;
 import bjc.imgchain.ImgPickerPanel;
 import bjc.imgchain.pipeline.StageType;
 
+/**
+ * Stage which recalls an image from memory.
+ * @author Ben Culkin
+ *
+ */
 public class RecallStage extends AbstractPipelineStage {
 	private String stashName;
 
+	/**
+	 * Create a new recall stage.
+	 */
 	public RecallStage() {
 		super(StageType.IMGSOURCE);
 	}

@@ -24,7 +24,7 @@ import bjc.imgchain.pipeline.stages.GaussStage;
 import bjc.imgchain.pipeline.stages.GreyscaleStage;
 import bjc.imgchain.pipeline.stages.IDStage;
 import bjc.imgchain.pipeline.stages.LoadStage;
-import bjc.imgchain.pipeline.stages.NegativeStage;
+import bjc.imgchain.pipeline.stages.InverseColorStage;
 import bjc.imgchain.pipeline.stages.PipeStage;
 import bjc.imgchain.pipeline.stages.RecallStage;
 import bjc.imgchain.pipeline.stages.SaveStage;
@@ -150,7 +150,7 @@ public class ImgPipeline extends JInternalFrame {
 				}
 					break;
 				case "Negative": {
-					stag = new NegativeStage();
+					stag = new InverseColorStage();
 				}
 					break;
 				case "Gaussian Blur": {

@@ -12,10 +12,18 @@ import javax.swing.JPanel;
 import bjc.imgchain.pipeline.StageType;
 import bjc.imgchain.utils.LabeledInputPanel;
 
+/**
+ * Stage which runs a gaussian blur over an image.
+ * @author Ben Culkin
+ *
+ */
 public class GaussStage extends AbstractPipelineStage {
 	private int m;
 	private double sig, k;
 
+	/**
+	 * Create a new gaussian blur stage.
+	 */
 	public GaussStage() {
 		super(StageType.IMGTRANS);
 	}
@@ -33,6 +41,10 @@ public class GaussStage extends AbstractPipelineStage {
 		return ret;
 	}
 
+	/* @TODO 5 Oct, 2020 - Ben Culkin - :GaussianDoc
+	 * 
+	 * Should document this better, when I get a chance to relookup the applicable math.
+	 */
 	private Kernel genKern() {
 		float[][] w = new float[m][m];
 
@@ -93,10 +105,12 @@ public class GaussStage extends AbstractPipelineStage {
 		mField.field.addPropertyChangeListener("value", (ev) -> {
 			m = (Integer) mField.field.getValue();
 		});
+		
 		LabeledInputPanel sigField = new LabeledInputPanel("Value for sigma", 3.0);
 		sigField.field.addPropertyChangeListener("value", (ev) -> {
 			sig = (Double) sigField.field.getValue();
 		});
+		
 		LabeledInputPanel kField = new LabeledInputPanel("Value for k", 1.0);
 		kField.field.addPropertyChangeListener("value", (ev) -> {
 			k = (Double) kField.field.getValue();

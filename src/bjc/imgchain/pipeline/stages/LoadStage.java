@@ -16,9 +16,17 @@ import javax.swing.JTextField;
 
 import bjc.imgchain.pipeline.StageType;
 
+/**
+ * Stage which loads an image.
+ * @author Ben Culkin
+ *
+ */
 public class LoadStage extends AbstractPipelineStage {
 	private String fileName;
 
+	/**
+	 * Create a new stage which loads an image.
+	 */
 	public LoadStage() {
 		super(StageType.IMGSOURCE);
 	}

@@ -12,6 +12,12 @@ import bjc.imgchain.pipeline.StageType;
 public abstract class AbstractPipelineStage implements PipelineStage {
 	private final StageType type;
 
+	/**
+	 * Create a new abstract pipeline stage
+	 * 
+	 * @param type
+	 *             The type of this stage.
+	 */
 	protected AbstractPipelineStage(StageType type) {
 		this.type = type;
 	}

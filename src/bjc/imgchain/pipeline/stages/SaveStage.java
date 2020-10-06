@@ -17,9 +17,18 @@ import javax.swing.JTextField;
 import bjc.imgchain.pipeline.StageType;
 import bjc.imgchain.utils.Utils;
 
+/**
+ * Stage which saves an image.
+ * 
+ * @author Ben Culkin
+ *
+ */
 public class SaveStage extends AbstractPipelineStage {
 	private String fileName;
 
+	/**
+	 * Create a stage that saves an image.
+	 */
 	public SaveStage() {
 		super(StageType.IMGSINK);
 	}

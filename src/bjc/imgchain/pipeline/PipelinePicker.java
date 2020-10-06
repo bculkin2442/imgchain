@@ -12,11 +12,22 @@ import javax.swing.JScrollPane;
 
 import bjc.imgchain.ImgChain;
 
+/**
+ * GUI to pick a pipeline to apply.
+ * @author Ben Culkin
+ *
+ */
 public class PipelinePicker extends JDialog {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * The name of the pipe to apply.
+	 */
 	public String pipeName;
 
+	/**
+	 * Create a new pipeline picker GUI.
+	 */
 	public PipelinePicker() {
 		super();
 
@@ -30,8 +41,8 @@ public class PipelinePicker extends JDialog {
 		setLayout(new BorderLayout());
 
 		DefaultListModel<String> pipeModel = new DefaultListModel<>();
-		for (String pipeName : ImgChain.chan.pipelineRepo.keySet()) {
-			pipeModel.addElement(pipeName);
+		for (String pipelneName : ImgChain.chan.pipelineRepo.keySet()) {
+			pipeModel.addElement(pipelneName);
 		}
 
 		JList<String> pipeList = new JList<>(pipeModel);

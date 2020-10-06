@@ -10,11 +10,27 @@ import javax.swing.border.TitledBorder;
 import bjc.imgchain.pipeline.StageType;
 import bjc.imgchain.utils.LabeledInputPanel;
 
+/**
+ * Stage which converts an image into three-tone.
+ * 
+ * @author Ben Culkin
+ *
+ */
 public class ThresholdStage extends AbstractPixelStage {
+	/**
+	 * Create a new threshold stage, where all of the thresholds are 0.
+	 */
 	public ThresholdStage() {
 		this(0, 0, 0);
 	}
 
+	/**
+	 * Creates a new threshold stage.
+	 * 
+	 * @param rr The red threshold.
+	 * @param gg The green threshold.
+	 * @param bb The blue threshold.
+	 */
 	public ThresholdStage(int rr, int gg, int bb) {
 		super(StageType.IMGTRANS);
 

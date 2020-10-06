@@ -5,12 +5,22 @@ import javax.swing.JLabel;
 
 import bjc.imgchain.pipeline.StageType;
 
+/**
+ * Transforms an image to a greyscale version.
+ * 
+ * @author Ben Culkin
+ *
+ */
 public class GreyscaleStage extends AbstractPixelStage {
 
+	/**
+	 * Create a new greyscale stage.
+	 */
 	public GreyscaleStage() {
 		super(StageType.IMGTRANS);
 	}
 
+	@Override
 	public int[] processPixel(int[] pix) {
 		int[] ret = new int[4];
 

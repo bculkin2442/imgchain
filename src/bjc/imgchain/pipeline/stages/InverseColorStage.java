@@ -5,8 +5,17 @@ import javax.swing.JLabel;
 
 import bjc.imgchain.pipeline.StageType;
 
-public class NegativeStage extends AbstractPixelStage {
-	public NegativeStage() {
+/**
+ * Stage which inverts image colors.
+ * 
+ * @author Ben Culkin
+ *
+ */
+public class InverseColorStage extends AbstractPixelStage {
+	/**
+	 * Create a new inversion stage.
+	 */
+	public InverseColorStage() {
 		super(StageType.IMGTRANS);
 	}
 

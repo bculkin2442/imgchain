@@ -1,0 +1,8 @@
+@TODO Oct 6th, 2020 - Ben Culkin - :FilePipes
+	Add an ability to write/read pipelines from a file. This will likely
+	involve some fairly serious reconsideration of how stages are configured.
+
+@TODO Oct 6th, 2020 - Ben Culkin - :StageChaining
+	Some better ability to chain stages together without the inefficency
+	of running them one after the other. This won't work great for stages which
+	depend on the context of pixels around, but should work fine for most others.

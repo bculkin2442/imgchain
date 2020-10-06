@@ -10,9 +10,18 @@ import bjc.imgchain.ImgPickerPanel;
 import bjc.imgchain.pipeline.StageType;
 import bjc.imgchain.utils.Utils;
 
+/**
+ * Stage which applies a subtraction mask to the image.
+ * 
+ * @author Ben Culkin
+ *
+ */
 public class SubMaskStage extends AbstractPipelineStage {
 	private String masqueName;
 
+	/**
+	 * Create a new subtraction mask stage.
+	 */
 	public SubMaskStage() {
 		super(StageType.IMGTRANS);
 	}

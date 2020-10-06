@@ -11,11 +11,23 @@ import javax.swing.JTable;
 
 import bjc.imgchain.utils.ImmutableTableModel;
 
+/**
+ * Stage picker GUI.
+ * 
+ * @author Ben Culkin
+ *
+ */
 public class StagePicker extends JDialog {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Stage name to pick.
+	 */
 	public String stageName;
 
+	/**
+	 * Create a new stage picker.
+	 */
 	public StagePicker() {
 		super();
 

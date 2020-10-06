@@ -62,12 +62,12 @@ public class ImgChain {
 	 */
 	public JDesktopPane desktop;
 
-	/*
+	/**
 	 * The storage for images.
 	 */
 	public final Map<String, Image> imageRepo;
 
-	/*
+	/**
 	 * The storage for images.
 	 */
 	public final Map<String, Pipeline> pipelineRepo;
@@ -77,13 +77,15 @@ public class ImgChain {
 	 */
 	public static ImgChain chan;
 
+	/**
+	 * The main window.
+	 */
 	public JFrame frame;
 
 	/**
 	 * Main method
 	 * 
-	 * @param args
-	 *                Unused CLI args
+	 * @param args Unused CLI args.
 	 */
 	public static void main(String[] args) {
 		System.out.println("ImgChain Loading...");

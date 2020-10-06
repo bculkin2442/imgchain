@@ -14,9 +14,17 @@ import bjc.imgchain.pipeline.Pipeline;
 import bjc.imgchain.pipeline.PipelinePicker;
 import bjc.imgchain.pipeline.StageType;
 
+/**
+ * Stage which runs a sub-pipeline.
+ * @author Ben Culkin
+ *
+ */
 public class PipeStage extends AbstractPipelineStage {
 	private String pipeName;
 
+	/**
+	 * Create a new sub-pipeline stage.
+	 */
 	public PipeStage() {
 		super(StageType.IMGTRANS);
 	}

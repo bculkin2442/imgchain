@@ -8,9 +8,18 @@ import bjc.imgchain.ImgChain;
 import bjc.imgchain.pipeline.StageType;
 import bjc.imgchain.utils.LabeledInputPanel;
 
+/**
+ * Stage which stashes an image.
+ * 
+ * @author Ben Culkin
+ *
+ */
 public class StashStage extends AbstractPipelineStage {
 	private String stashName;
 
+	/**
+	 * Create a new image-stashing stage.
+	 */
 	public StashStage() {
 		super(StageType.IMGSOURCE);
 	}

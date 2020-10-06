@@ -20,17 +20,26 @@ public class ImgPickerPanel extends JPanel {
 	 * The place to stash the image.
 	 */
 	public String stashName;
+	
 	/**
 	 * The field to get the image from.
 	 */
 	public LabeledInputPanel imgField;
 
+	/**
+	 * Create a new image picker panel.
+	 */
 	public ImgPickerPanel() {
 		setLayout(new BorderLayout());
 
 		setupGUI("Image name");
 	}
 
+	/**
+	 * Create a new image picker panel.
+	 * 
+	 * @param lab The title for the label.
+	 */
 	public ImgPickerPanel(String lab) {
 		setLayout(new BorderLayout());
 
